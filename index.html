@@ -1,4 +1,7 @@
-<div class="popup-overlay" id="contactPopup">
+a[href="#"] .app-icon {
+            background-image: linear-gradient(135deg, #6200EA, #9D46FF);
+            animation: pulse 2s infinite;
+        }    <div class="popup-overlay" id="contactPopup">
         <div class="popup">
             <div class="popup-header">
                 <h2 class="popup-title">Contact Me</h2>
@@ -581,9 +584,9 @@
                     <div class="app-icon" style="background-color: #7B1FA2;">🧮</div>
                     <div class="app-name">คำนวณอายุ</div>
                 </a>
-                <a href="https://tinyurl.com/2xoxmwa4" class="app" target="_blank">
-                    <div class="app-icon" style="background-color: #1565C0;">📝</div>
-                    <div class="app-name">ใบลา 68</div>
+                <a href="#" class="app" id="contactButton">
+                    <div class="app-icon" style="background-color: #6200EA;">📞</div>
+                    <div class="app-name">Contact Me</div>
                 </a>
             </div>
             
@@ -640,15 +643,14 @@
             }
             
             // สคริปต์สำหรับ contact popup
-            const contactMenuButton = document.getElementById('contactButton');
+            const contactButton = document.getElementById('contactButton');
             const contactPopup = document.getElementById('contactPopup');
             const closePopup = document.getElementById('closePopup');
             const popupContent = document.querySelector('.popup');
             
-            if (contactMenuButton && contactPopup && closePopup && popupContent) {
-                contactMenuButton.addEventListener('click', function(event) {
+            if (contactButton && contactPopup && closePopup && popupContent) {
+                contactButton.addEventListener('click', function(event) {
                     event.preventDefault();
-                    menu.classList.remove('menu-visible'); // ปิดเมนูก่อน
                     contactPopup.style.display = 'flex';
                     setTimeout(function() {
                         popupContent.classList.add('popup-visible');
