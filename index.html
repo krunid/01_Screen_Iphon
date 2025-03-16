@@ -48,7 +48,7 @@
         .screen {
             width: 100%;
             height: 100%;
-            background-image: url('/api/placeholder/800/1200');
+            background-image: url('https://media.idownloadblog.com/wp-content/uploads/2024/09/iPhone-16-Pink-wallpaper.jpeg');
             background-size: cover;
             background-position: center;
             position: absolute;
@@ -72,7 +72,9 @@
             color: white;
             font-size: 18px;
             font-weight: 600;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .time {
@@ -109,6 +111,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .app:hover {
+            transform: scale(1.1);
+        }
+        
+        .app:active {
+            transform: scale(0.95);
         }
         
         .app-icon {
@@ -189,53 +202,53 @@
             
             <div class="app-grid">
                 <!-- Row 1 -->
-                <div class="app">
+                <a href="#phone" class="app" onclick="alert('เปิดแอปโทรศัพท์')">
                     <div class="app-icon" style="background-color: #5AC8FA;">📱</div>
                     <div class="app-name">โทรศัพท์</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#messages" class="app" onclick="alert('เปิดแอปข้อความ')">
                     <div class="app-icon" style="background-color: #4CD964;">💬</div>
                     <div class="app-name">ข้อความ</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#music" class="app" onclick="alert('เปิดแอปเพลง')">
                     <div class="app-icon" style="background-color: #FF9500;">🎵</div>
                     <div class="app-name">เพลง</div>
-                </div>
+                </a>
                 
                 <!-- Row 2 -->
-                <div class="app">
+                <a href="#mail" class="app" onclick="alert('เปิดแอปอีเมล')">
                     <div class="app-icon" style="background-color: #FF3B30;">📧</div>
                     <div class="app-name">อีเมล</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#camera" class="app" onclick="alert('เปิดแอปกล้อง')">
                     <div class="app-icon" style="background-color: #5856D6;">📷</div>
                     <div class="app-name">กล้อง</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#maps" class="app" onclick="alert('เปิดแอปแผนที่')">
                     <div class="app-icon" style="background-color: #007AFF;">🗺️</div>
                     <div class="app-name">แผนที่</div>
-                </div>
+                </a>
                 
                 <!-- Row 3 -->
-                <div class="app">
+                <a href="#calendar" class="app" onclick="alert('เปิดแอปปฏิทิน')">
                     <div class="app-icon" style="background-color: #FF2D55;">📅</div>
                     <div class="app-name">ปฏิทิน</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#notes" class="app" onclick="alert('เปิดแอปบันทึก')">
                     <div class="app-icon" style="background-color: #FF9500;">📝</div>
                     <div class="app-name">บันทึก</div>
-                </div>
-                <div class="app">
+                </a>
+                <a href="#settings" class="app" onclick="alert('เปิดแอปการตั้งค่า')">
                     <div class="app-icon" style="background-color: #5AC8FA;">⚙️</div>
                     <div class="app-name">การตั้งค่า</div>
-                </div>
+                </a>
             </div>
             
             <div class="dock">
-                <div class="app-icon" style="background-color: #5AC8FA;">📱</div>
-                <div class="app-icon" style="background-color: #FF9500;">🌐</div>
-                <div class="app-icon" style="background-color: #4CD964;">📷</div>
-                <div class="app-icon" style="background-color: #FF3B30;">🎵</div>
+                <a href="#phone" class="app-icon" style="background-color: #5AC8FA;" onclick="alert('เปิดแอปโทรศัพท์')">📱</a>
+                <a href="#safari" class="app-icon" style="background-color: #FF9500;" onclick="alert('เปิดแอปซาฟารี')">🌐</a>
+                <a href="#camera" class="app-icon" style="background-color: #4CD964;" onclick="alert('เปิดแอปกล้อง')">📷</a>
+                <a href="#music" class="app-icon" style="background-color: #FF3B30;" onclick="alert('เปิดแอปเพลง')">🎵</a>
             </div>
             
             <div class="home-indicator"></div>
