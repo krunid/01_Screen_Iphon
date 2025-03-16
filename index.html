@@ -13,28 +13,32 @@
         }
         
         html, body {
-            background-color: #000;
+            background-color: #333;
             margin: 0;
             padding: 0;
-            height: 100vh; /* ใช้ viewport height */
-            width: 100vw; /* ใช้ viewport width */
+            height: 100vh;
+            width: 100vw;
             overflow: hidden;
             position: fixed;
             top: 0;
             left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .iphone {
-            width: 100vw;
-            height: 100vh;
-            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            width: 90%;
+            height: 90%;
             background-color: #000;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: auto;
+            top: 5%;
+            left: 5%;
+            right: 5%;
+            bottom: 5%;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .notch {
@@ -42,13 +46,13 @@
         }
         
         .screen {
-            width: 100vw;
-            height: 100vh;
-            background-image: url('/api/placeholder/1920/1080');
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/800/1200');
             background-size: cover;
             background-position: center;
             position: absolute;
-            overflow: auto;
+            overflow: hidden;
             background-color: #121212;
             top: 0;
             left: 0;
@@ -56,6 +60,7 @@
             bottom: 0;
             display: flex;
             flex-direction: column;
+            border-radius: 20px;
         }
         
         .status-bar {
@@ -88,12 +93,12 @@
         
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 30px;
             margin-top: 60px;
             width: 100%;
-            max-width: 1400px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             flex: 1;
@@ -128,7 +133,7 @@
         }
         
         .dock {
-            position: fixed;
+            position: absolute;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
@@ -156,7 +161,7 @@
         }
         
         .home-indicator {
-            position: fixed;
+            position: absolute;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
@@ -196,23 +201,11 @@
                     <div class="app-icon" style="background-color: #FF9500;">🎵</div>
                     <div class="app-name">เพลง</div>
                 </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF3B30;">📧</div>
-                    <div class="app-name">อีเมล</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #007AFF;">🔍</div>
-                    <div class="app-name">ค้นหา</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #8E8E93;">📸</div>
-                    <div class="app-name">รูปภาพ</div>
-                </div>
                 
                 <!-- Row 2 -->
                 <div class="app">
-                    <div class="app-icon" style="background-color: #FF2D55;">📅</div>
-                    <div class="app-name">ปฏิทิน</div>
+                    <div class="app-icon" style="background-color: #FF3B30;">📧</div>
+                    <div class="app-name">อีเมล</div>
                 </div>
                 <div class="app">
                     <div class="app-icon" style="background-color: #5856D6;">📷</div>
@@ -222,95 +215,19 @@
                     <div class="app-icon" style="background-color: #007AFF;">🗺️</div>
                     <div class="app-name">แผนที่</div>
                 </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF3B30;">🌡️</div>
-                    <div class="app-name">สภาพอากาศ</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #4CD964;">📰</div>
-                    <div class="app-name">ข่าว</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF9500;">🎬</div>
-                    <div class="app-name">ภาพยนตร์</div>
-                </div>
                 
                 <!-- Row 3 -->
                 <div class="app">
-                    <div class="app-icon" style="background-color: #4CD964;">⏰</div>
-                    <div class="app-name">นาฬิกา</div>
+                    <div class="app-icon" style="background-color: #FF2D55;">📅</div>
+                    <div class="app-name">ปฏิทิน</div>
                 </div>
                 <div class="app">
-                    <div class="app-icon" style="background-color: #FF9500;">📋</div>
+                    <div class="app-icon" style="background-color: #FF9500;">📝</div>
                     <div class="app-name">บันทึก</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #5856D6;">📚</div>
-                    <div class="app-name">หนังสือ</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #007AFF;">🏪</div>
-                    <div class="app-name">App Store</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF2D55;">💰</div>
-                    <div class="app-name">กระเป๋าเงิน</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #5AC8FA;">🎙️</div>
-                    <div class="app-name">บันทึกเสียง</div>
-                </div>
-                
-                <!-- Row 4 -->
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF2D55;">🎮</div>
-                    <div class="app-name">เกม</div>
                 </div>
                 <div class="app">
                     <div class="app-icon" style="background-color: #5AC8FA;">⚙️</div>
                     <div class="app-name">การตั้งค่า</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #8E8E93;">🧮</div>
-                    <div class="app-name">เครื่องคิดเลข</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #4CD964;">📹</div>
-                    <div class="app-name">วิดีโอ</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #007AFF;">📝</div>
-                    <div class="app-name">เอกสาร</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF3B30;">❤️</div>
-                    <div class="app-name">สุขภาพ</div>
-                </div>
-                
-                <!-- Row 5 -->
-                <div class="app">
-                    <div class="app-icon" style="background-color: #4CD964;">🎧</div>
-                    <div class="app-name">พอดคาสต์</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF9500;">👥</div>
-                    <div class="app-name">รายชื่อ</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #5856D6;">📺</div>
-                    <div class="app-name">ทีวี</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #007AFF;">📡</div>
-                    <div class="app-name">AirDrop</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #FF2D55;">🔒</div>
-                    <div class="app-name">รหัสผ่าน</div>
-                </div>
-                <div class="app">
-                    <div class="app-icon" style="background-color: #5AC8FA;">💤</div>
-                    <div class="app-name">อัพเดท</div>
                 </div>
             </div>
             
