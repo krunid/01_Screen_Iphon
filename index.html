@@ -1,4 +1,184 @@
-<!DOCTYPE html>
+<div class="popup-overlay" id="contactPopup">
+        <div class="popup">
+            <div class="popup-header">
+                <h2 class="popup-title">Contact Me</h2>
+                <button class="popup-close" id="closePopup">✕</button>
+            </div>
+            <div class="popup-content">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <div class="contact-label">เบอร์โทร</div>
+                        <div class="contact-value">098-765-4321</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <div class="contact-label">อีเมล</div>
+                        <div class="contact-value">krunid@example.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏫</div>
+                    <div class="contact-info">
+                        <div class="contact-label">สถานที่ทำงาน</div>
+                        <div class="contact-value">โรงเรียนวังไกลกังวล</div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/KrunidE23VKF" target="_blank" class="social-link facebook">f</a>
+                    <a href="#twitter" class="social-link twitter">t</a>
+                    <a href="#instagram" class="social-link instagram">i</a>
+                    <a href="#line" class="social-link line">L</a>
+                </div>
+            </div>
+        </div>
+    </div>        /* สไตล์สำหรับ popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .popup {
+            background-color: rgba(40, 40, 40, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 350px;
+            width: 80%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .popup-header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .popup-title {
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: #ff3b30;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popup-content {
+            color: white;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-label {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 2px;
+        }
+        
+        .contact-value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .facebook {
+            background-color: #1877F2;
+        }
+        
+        .twitter {
+            background-color: #1DA1F2;
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .line {
+            background-color: #00B900;
+        }<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -81,6 +261,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            font-family: monospace;
+            letter-spacing: 1px;
         }
         
         .icons {
@@ -428,30 +610,66 @@
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
             const minutes = now.getMinutes().toString().padStart(2, '0');
-            document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
         }
-
-        // อัพเดทเวลาทันทีเมื่อโหลดหน้า
-        updateTime();
         
-        // ตั้งเวลาอัพเดททุก 1 วินาที
-        setInterval(updateTime, 1000);
-        
-        // สคริปต์สำหรับเมนู
+        // เมื่อ DOM โหลดเสร็จ
         document.addEventListener('DOMContentLoaded', function() {
+            // อัพเดทเวลาทันที
+            updateTime();
+            
+            // ตั้งเวลาอัพเดททุก 1 วินาที
+            setInterval(updateTime, 1000);
+            
+            // สคริปต์สำหรับเมนู
             const menuButton = document.getElementById('menuButton');
             const menu = document.getElementById('menu');
             
-            menuButton.addEventListener('click', function() {
-                menu.classList.toggle('menu-visible');
-            });
+            if (menuButton && menu) {
+                menuButton.addEventListener('click', function() {
+                    menu.classList.toggle('menu-visible');
+                });
+                
+                // ปิดเมนูเมื่อคลิกนอกพื้นที่เมนู
+                document.addEventListener('click', function(event) {
+                    if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
+                        menu.classList.remove('menu-visible');
+                    }
+                });
+            }
             
-            // ปิดเมนูเมื่อคลิกนอกพื้นที่เมนู
-            document.addEventListener('click', function(event) {
-                if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
-                    menu.classList.remove('menu-visible');
-                }
-            });
+            // สคริปต์สำหรับ contact popup
+            const contactButton = document.getElementById('contactButton');
+            const contactPopup = document.getElementById('contactPopup');
+            const closePopup = document.getElementById('closePopup');
+            const popupContent = document.querySelector('.popup');
+            
+            if (contactButton && contactPopup && closePopup && popupContent) {
+                contactButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    contactPopup.style.display = 'flex';
+                    setTimeout(function() {
+                        popupContent.classList.add('popup-visible');
+                    }, 10);
+                });
+                
+                closePopup.addEventListener('click', function() {
+                    popupContent.classList.remove('popup-visible');
+                    setTimeout(function() {
+                        contactPopup.style.display = 'none';
+                    }, 300);
+                });
+                
+                contactPopup.addEventListener('click', function(event) {
+                    if (event.target === contactPopup) {
+                        popupContent.classList.remove('popup-visible');
+                        setTimeout(function() {
+                            contactPopup.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
         });
     </script>
 </body>
