@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>iPhone Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        html, body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* ใช้ viewport height */
+            width: 100vw; /* ใช้ viewport width */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        
+        .iphone {
+            width: 100vw;
+            height: 100vh;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+        }
+        
+        .notch {
+            display: none; /* ซ่อน notch เมื่อทำเป็น full screen */
+        }
+        
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            overflow: auto;
+            background-color: #121212;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .time {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .icons {
+            position: absolute;
+            right: 20px;
+            display: flex;
+        }
+        
+        .icons .icon {
+            margin-left: 5px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            flex: 1;
+            align-content: start;
+        }
+        
+        .app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-name {
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .dock {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: auto;
+            gap: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dock .app-icon {
+            margin-bottom: 0;
+            width: 80px;
+            height: 80px;
+            transition: transform 0.2s;
+        }
+        
+        .dock .app-icon:hover {
+            transform: translateY(-10px);
+        }
+        
+        .home-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 5px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone">
+        <div class="notch"></div>
+        <div class="screen">
+            <div class="status-bar">
+                <div class="carrier">AIS</div>
+                <div class="time" id="current-time">00:00</div>
+                <div class="icons">
+                    <div class="icon">📶</div>
+                    <div class="icon">📊</div>
+                    <div class="icon">🔋</div>
+                </div>
+            </div>
+            
+            <div class="app-grid">
+                <!-- Row 1 -->
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5AC8FA;">📱</div>
+                    <div class="app-name">โทรศัพท์</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #4CD964;">💬</div>
+                    <div class="app-name">ข้อความ</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF9500;">🎵</div>
+                    <div class="app-name">เพลง</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF3B30;">📧</div>
+                    <div class="app-name">อีเมล</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #007AFF;">🔍</div>
+                    <div class="app-name">ค้นหา</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #8E8E93;">📸</div>
+                    <div class="app-name">รูปภาพ</div>
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF2D55;">📅</div>
+                    <div class="app-name">ปฏิทิน</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5856D6;">📷</div>
+                    <div class="app-name">กล้อง</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #007AFF;">🗺️</div>
+                    <div class="app-name">แผนที่</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF3B30;">🌡️</div>
+                    <div class="app-name">สภาพอากาศ</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #4CD964;">📰</div>
+                    <div class="app-name">ข่าว</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF9500;">🎬</div>
+                    <div class="app-name">ภาพยนตร์</div>
+                </div>
+                
+                <!-- Row 3 -->
+                <div class="app">
+                    <div class="app-icon" style="background-color: #4CD964;">⏰</div>
+                    <div class="app-name">นาฬิกา</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF9500;">📋</div>
+                    <div class="app-name">บันทึก</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5856D6;">📚</div>
+                    <div class="app-name">หนังสือ</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #007AFF;">🏪</div>
+                    <div class="app-name">App Store</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF2D55;">💰</div>
+                    <div class="app-name">กระเป๋าเงิน</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5AC8FA;">🎙️</div>
+                    <div class="app-name">บันทึกเสียง</div>
+                </div>
+                
+                <!-- Row 4 -->
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF2D55;">🎮</div>
+                    <div class="app-name">เกม</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5AC8FA;">⚙️</div>
+                    <div class="app-name">การตั้งค่า</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #8E8E93;">🧮</div>
+                    <div class="app-name">เครื่องคิดเลข</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #4CD964;">📹</div>
+                    <div class="app-name">วิดีโอ</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #007AFF;">📝</div>
+                    <div class="app-name">เอกสาร</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF3B30;">❤️</div>
+                    <div class="app-name">สุขภาพ</div>
+                </div>
+                
+                <!-- Row 5 -->
+                <div class="app">
+                    <div class="app-icon" style="background-color: #4CD964;">🎧</div>
+                    <div class="app-name">พอดคาสต์</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF9500;">👥</div>
+                    <div class="app-name">รายชื่อ</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5856D6;">📺</div>
+                    <div class="app-name">ทีวี</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #007AFF;">📡</div>
+                    <div class="app-name">AirDrop</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #FF2D55;">🔒</div>
+                    <div class="app-name">รหัสผ่าน</div>
+                </div>
+                <div class="app">
+                    <div class="app-icon" style="background-color: #5AC8FA;">💤</div>
+                    <div class="app-name">อัพเดท</div>
+                </div>
+            </div>
+            
+            <div class="dock">
+                <div class="app-icon" style="background-color: #5AC8FA;">📱</div>
+                <div class="app-icon" style="background-color: #FF9500;">🌐</div>
+                <div class="app-icon" style="background-color: #4CD964;">📷</div>
+                <div class="app-icon" style="background-color: #FF3B30;">🎵</div>
+            </div>
+            
+            <div class="home-indicator"></div>
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันอัพเดทเวลาปัจจุบัน
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+        }
+
+        // อัพเดทเวลาทันทีเมื่อโหลดหน้า
+        updateTime();
+        
+        // ตั้งเวลาอัพเดททุก 1 วินาที
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
