@@ -640,14 +640,15 @@
             }
             
             // สคริปต์สำหรับ contact popup
-            const contactButton = document.getElementById('contactButton');
+            const contactMenuButton = document.getElementById('contactButton');
             const contactPopup = document.getElementById('contactPopup');
             const closePopup = document.getElementById('closePopup');
             const popupContent = document.querySelector('.popup');
             
-            if (contactButton && contactPopup && closePopup && popupContent) {
-                contactButton.addEventListener('click', function(event) {
+            if (contactMenuButton && contactPopup && closePopup && popupContent) {
+                contactMenuButton.addEventListener('click', function(event) {
                     event.preventDefault();
+                    menu.classList.remove('menu-visible'); // ปิดเมนูก่อน
                     contactPopup.style.display = 'flex';
                     setTimeout(function() {
                         popupContent.classList.add('popup-visible');
